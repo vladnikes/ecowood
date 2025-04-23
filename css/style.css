@@ -39,6 +39,14 @@ header {
 	width: 100%; /* Занимает всю ширину header */
 	height: 100%; /* Занимает всю высоту header */
 	object-fit: cover; /* Масштабирует изображение, сохраняя его пропорции, чтобы заполнить блок без искажений */
+	z-index: 1; /* Помещает изображение под другие элементы в header */
+}
+
+.header-nebo {
+	position: absolute; /* Абсолютное позиционирование относительно родительского header */
+	width: 100%; /* Занимает всю ширину header */
+	height: 100%; /* Занимает всю высоту header */
+	object-fit: cover; /* Масштабирует изображение, сохраняя его пропорции, чтобы заполнить блок без искажений */
 	z-index: 0; /* Помещает изображение под другие элементы в header */
 }
 
@@ -47,45 +55,64 @@ header {
 	top: 50%; /* Сдвигает верхний край текста к середине по вертикали */
 	left: 50%; /* Сдвигает левый край текста к середине по горизонтали */
 	transform: translate(-50%, -50%); /* Центрирует текст точно по центру, сдвигая его назад на половину ширины и высоты */
-	color: #66bb6a; /* Светло-зелёный цвет текста */
+	color: #66bb6a;	/* Светло-зелёный цвет текста */
 	font-size: 8rem; /* Очень крупный шрифт */
 	font-weight: bolder; /* Очень жирный шрифт */
-	text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* Тень под текстом для контраста и объёма */
+	text-shadow: 
+    2px 2px 10px rgba(0, 0, 0, 0.5),
+    -2px 2px 10px rgba(0, 0, 0, 0.5),
+    2px -2px 10px rgba(0, 0, 0, 0.5),
+    -2px -2px 10px rgba(0, 0, 0, 0.5); /* Тень под текстом для контраста и объёма */
 	font-family: 'WinterTrees', sans-serif; /* Используется кастомный шрифт, с запасным вариантом */
 	z-index: 1; /* Помещает текст поверх фонового изображения */
+
 }
+
 
 nav {
-	background-color: #66bb6a; /* Зелёный фон для навигационного меню */
-	padding: 10px 0; /* Вертикальные отступы сверху и снизу */
-	text-align: center; /* Центрирует содержимое навигации по горизонтали */
+  background-color: rgba(102, 187, 106, 1);
+  padding: 10px 0;
+  text-align: center;
 }
 
-
 nav ul {
-	list-style: none; /* Убирает стандартные маркеры у списка */
-	padding: 10px; /* Добавляет внутренний отступ внутри ul */
+  list-style: none;
+  padding: 10px;
 }
 
 nav li {
-	display: inline-block; /* Располагает пункты меню в одну линию (горизонтально) */
-	margin: 0 10px; /* Добавляет горизонтальные отступы между пунктами меню */
+  display: inline-block;
+  margin: 0 10px;
 }
 
 nav a {
-	padding: 10px 20px; /* Пространство внутри кнопки (сверху/снизу 10px, слева/справа 20px) */
-	background-color: white; /* Белый фон кнопки */
-	color: #2e7d32; /* Тёмно-зелёный цвет текста */
-	text-decoration: none; /* Убирает подчёркивание у ссылок */
-	border-radius: 5px; /* Скруглённые углы у кнопок */
-	font-weight: bold; /* Жирное начертание текста */
-	transition: background-color 0.3s; /* Плавное изменение цвета фона при наведении */
+  padding: 10px 20px;
+  background-color: white;
+  color: #2e7d32;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 nav a:hover,
 nav a.active {
-	background-color: #c8e6c9; /* Меняет фон ссылки на светло-зелёный при наведении или если у неё есть класс .active */
+  background-color: #c8e6c9;
 }
+
+nav a:hover .icon {
+  transform: scale(1.2);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
 
 .page {
 	position: absolute; /* Позволяет позиционировать страницу независимо от потока документа */
@@ -274,6 +301,9 @@ footer {
   animation: spin 4s linear infinite; /* Анимация вращения: 4 секунды, равномерно, бесконечно */
 }
 
+.vinyl-container:hover #vinyl {
+  transform: scale(1.1); /* Увеличение на 10% */
+}
 /* Определение анимации вращения */
 @keyframes spin {
   from { transform: rotate(0deg); }   /* Начальное состояние — без поворота */
