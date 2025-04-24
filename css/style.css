@@ -24,94 +24,112 @@ main {
     position: relative; /* Позволяет позиционировать вложенные элементы относительно блока main */
     min-height: 100%; /* Минимальная высота main — 100% от родителя */
     flex: 1; /* Заставляет main занимать всё доступное пространство между шапкой и подвалом */
+	margin-top: -50px;
+
 }
 
 header {
-	position: relative; /* Делает header контейнером для абсолютно позиционированных вложенных элементов */
-	width: 100%; /* Занимает всю ширину окна */
-	min-height: 25%; /* Минимальная высота — 25% от родительского элемента */
-	background-color: #81c784; /* Задаёт зелёный фон на случай, если изображение не загрузится */
-	overflow: hidden; /* Скрывает всё, что выходит за пределы header */
+  position: relative;
+  width: 100%;
+  min-height: 40%;
+  background-color: transparent;
+  overflow: hidden;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-image {
-	position: absolute; /* Абсолютное позиционирование относительно родительского header */
-	width: 100%; /* Занимает всю ширину header */
-	height: 100%; /* Занимает всю высоту header */
-	object-fit: cover; /* Масштабирует изображение, сохраняя его пропорции, чтобы заполнить блок без искажений */
-	z-index: 1; /* Помещает изображение под другие элементы в header */
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	object-fit: cover;
+	z-index: 1;
 }
 
 .header-nebo {
-	position: absolute; /* Абсолютное позиционирование относительно родительского header */
-	width: 100%; /* Занимает всю ширину header */
-	height: 100%; /* Занимает всю высоту header */
-	object-fit: cover; /* Масштабирует изображение, сохраняя его пропорции, чтобы заполнить блок без искажений */
-	z-index: 0; /* Помещает изображение под другие элементы в header */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 250px; /* Увеличено, чтобы фон растянулся и под навигацию */
+	object-fit: cover;
+	z-index: 0;
 }
 
 .header-title {
-	position: absolute; /* Позволяет точно позиционировать элемент внутри родителя (header) */
-	top: 50%; /* Сдвигает верхний край текста к середине по вертикали */
-	left: 50%; /* Сдвигает левый край текста к середине по горизонтали */
-	transform: translate(-50%, -50%); /* Центрирует текст точно по центру, сдвигая его назад на половину ширины и высоты */
-	color: #66bb6a;	/* Светло-зелёный цвет текста */
-	font-size: 8rem; /* Очень крупный шрифт */
-	font-weight: bolder; /* Очень жирный шрифт */
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #66bb6a;
+	font-size: 8rem;
+	font-weight: bolder;
 	text-shadow: 
-    2px 2px 10px rgba(0, 0, 0, 0.5),
-    -2px 2px 10px rgba(0, 0, 0, 0.5),
-    2px -2px 10px rgba(0, 0, 0, 0.5),
-    -2px -2px 10px rgba(0, 0, 0, 0.5); /* Тень под текстом для контраста и объёма */
-	font-family: 'WinterTrees', sans-serif; /* Используется кастомный шрифт, с запасным вариантом */
-	z-index: 1; /* Помещает текст поверх фонового изображения */
-
+		2px 2px 10px rgba(0, 0, 0, 0.5),
+		-2px 2px 10px rgba(0, 0, 0, 0.5),
+		2px -2px 10px rgba(0, 0, 0, 0.5),
+		-2px -2px 10px rgba(0, 0, 0, 0.5);
+	font-family: 'WinterTrees', sans-serif;
+	z-index: 2;
 }
 
-
 nav {
-  background-color: rgba(102, 187, 106, 1);
+  position: relative;
+  z-index: 2;
   padding: 10px 0;
   text-align: center;
+  background-color: transparent;
+  width: 100%;
+  margin-top: 150px;
 }
 
 nav ul {
   list-style: none;
   padding: 10px;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;       /* Не даём переноситься кнопкам */
+  gap: 20px;               /* Расстояние между кнопками */
+  overflow-x: auto;        /* Скролл при маленьком экране */
+  scroll-behavior: smooth;
 }
 
 nav li {
-  display: inline-block;
-  margin: 0 10px;
+  flex: 0 0 auto; /* Кнопки не сжимаются и не растягиваются */
 }
 
 nav a {
   padding: 10px 20px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5); /* Только фон полупрозрачный */
   color: #2e7d32;
   text-decoration: none;
   border-radius: 10px;
   font-weight: bold;
-  transition: background-color 0.3s;
+  transition: background-color 0.7s;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  white-space: nowrap; /* Не даём тексту переноситься */
 }
 
 nav a:hover,
 nav a.active {
-  background-color: #c8e6c9;
+  background-color: rgba(255, 255, 255, 1);
 }
 
-nav a:hover .icon {
-  transform: scale(1.2);
-}
 
 .icon {
   width: 20px;
   height: 20px;
   transition: transform 0.2s ease;
+  filter: none; /* Убедимся, что иконки не полупрозрачные */
 }
+
+
 
 
 .page {
@@ -206,63 +224,90 @@ footer {
 }
 
 .slider {
-	position: relative; /* Позволяет позиционировать дочерние элементы (например, стрелки/индикаторы) относительно слайдера */
-	width: 80%; /* Ширина слайдера — 80% от родительского контейнера */
-	max-width: 600px; /* Максимальная ширина: не будет шире 600px, даже на больших экранах */
-	margin: auto; /* Горизонтальное выравнивание по центру */
-	overflow: hidden; /* Обрезает всё, что выходит за границы слайдера (нужно, чтобы показывался только один слайд) */
-	border-radius: 10px; /* Скруглённые углы слайдера */
-	box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Тень под слайдером для объёма и стиля */
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  aspect-ratio: 16 / 9; /* Задаёт высоту, чтоб слайдер не схлопывался */
 }
 
+
 .slides {
-	display: flex; /* Отображаем слайды в ряд (в одну строку) */
-	transition: transform 0.5s ease-in-out; /* Плавное перемещение при смене слайдов */
-	width: 100%; /* Ширина контейнера для слайдов (можно переопределять при необходимости) */
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
 }
 
 .slide {
-	flex: 0 0 100%; /* Каждый слайд не сжимается и не расширяется, занимает ровно 100% ширины */
-	max-width: 100%; /* Ширина слайда не превышает 100% ширины контейнера */
+  flex: 0 0 100%;
+  max-width: 100%;
+  height: 100%;
 }
 
 .slide img,
 .slide video {
-	width: 100%;            /* Изображение или видео растягивается на всю ширину слайда */
-	height: 100%;           /* Растягивается по высоте слайдера (заполняет весь блок) */
-	object-fit: cover;      /* Контент заполняет контейнер полностью, обрезая лишнее, но сохраняя пропорции */
-	display: block;         /* Убирает лишние отступы (по умолчанию у <img> есть отступ снизу как у inline-элемента) */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* Кнопки переключения слайдов */
+/* Индикаторы */
+.indicators {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.indicator.active {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  transform: scale(1.2);
+}
+
+/* Кнопки */
 .prev,
 .next {
-	position: absolute;               /* Абсолютное позиционирование относительно .slider */
-	top: 50%;                         /* Размещаем по вертикали по центру */
-	transform: translateY(-50%);      /* Смещаем вверх на 50% от собственной высоты для идеального центрирования */
-	background: rgba(0,0,0,0.4);      /* Полупрозрачный чёрный фон */
-	color: white;                     /* Цвет текста (стрелки или символа) — белый */
-	border: none;                     /* Убираем рамку */
-	font-size: 2rem;                  /* Размер текста/иконки внутри кнопки */
-	padding: 0 12px;                  /* Горизонтальный внутренний отступ */
-	cursor: pointer;                  /* При наведении курсор становится "указателем" */
-	z-index: 10;                      /* Помещаем кнопки поверх других элементов */
-	border-radius: 4px;              /* Скругляем углы */
-	user-select: none;               /* Запрещаем выделение текста (чтобы случайно не выделялось при клике) */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 3px 12px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 4px;
+  user-select: none;
+  opacity: 0.8;
 }
 
-.prev {
-	left: 10px; /* Кнопка "назад" прижата к левому краю слайдера, отступ 10px */
-}
-
-.next {
-	right: 10px; /* Кнопка "вперёд" прижата к правому краю слайдера, отступ 10px */
-}
+.prev { left: 10px; }
+.next { right: 10px; }
 
 .prev:hover,
 .next:hover {
-	background: rgba(0,0,0,0.7); /* При наведении — более тёмный фон для кнопок */
+  background: rgba(0,0,0,0.8);
+  opacity: 1;
 }
+
 
 /* Стили для элемента с листьями винила */
 .vinyl-leaves {
