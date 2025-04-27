@@ -12,23 +12,112 @@
 }
 
 html, body {
+  background: linear-gradient(to bottom, #0072ed 0%, #e8f5e9 100%); /* Небо -> трава */
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #e8f5e9;
   color: #2e7d32;
-  min-height: 100%; /* */
+  min-height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column;
 }
 
 main {
   position: relative;
-  min-height: 100%;
   flex: 1;
   display: flex;
   width: 100%;
   flex-direction: column;
+}
+
+/* Листик */
+.leaf {
+  position: absolute;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background: url('../images/green.png') no-repeat center/contain;
+  animation: fall 15s linear infinite;
+  opacity: 0.8;
+}
+/* Скрытие листиков */
+.leaves-hidden .leaf {
+  visibility: hidden;
+  animation: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.1; /* пока лист падает — он видимый */
+  }
+  100% {
+    transform: translateX(var(--move-x, 200vw)) translateY(calc(120vh)) rotate(var(--rotate, 360deg));
+    opacity: 0; /* исчезает за подвалом */
+  }
+}
+
+
+.leaves-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* высота будет равна высоте сайта */
+  overflow: hidden; /* запретить скролл из-за листиков */
+  pointer-events: none; /* чтобы не мешали нажимать кнопки */
+  z-index: 0; /* чтобы листики были под контентом, если нужно */
+}
+
+/* Стили для кнопки переключения листиков */
+.leaves-toggle-container {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.leaves-toggle-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.leaves-toggle-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.leaves-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.leaf-icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.leaves-toggle-btn:hover .leaf-icon {
+  transform: rotate(15deg);
+}
+
+/* Состояние выключенных листиков */
+.leaves-off .leaf-icon {
+  opacity: 0.5;
+  transform: rotate(-15deg);
 }
 
 footer {
@@ -41,8 +130,7 @@ footer {
 }
 
 .footer-text{
-  color: #66bb6a;
-  font-weight: bolder;
+  color: #F5F5F5;
   text-shadow:
     2px 2px 10px rgba(0, 0, 0, 1),
     -2px 2px 10px rgba(0, 0, 0, 1),
@@ -67,7 +155,6 @@ header {
   position: relative;
   width: 100%;
   background-color: transparent;
-  overflow: hidden;
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
@@ -77,20 +164,22 @@ header {
 .header-image {
   position: absolute;
   width: 100%;
-  height: 50%;
+  height: 80%;
   object-fit: cover;
   z-index: 1;
 }
 
 .header-nebo {
   position: absolute;
+  overflow: visible;
   top: 0;
   left: 0;
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
   z-index: 0;
-  filter: blur(2px);
+  filter: blur(3px);
+  opacity: 1;
 }
 
 .header-title {
@@ -194,12 +283,11 @@ nav a.active {
   padding: 0;
   margin: 20px auto;
   border-radius: 20px;
-  background-color: #c8e6c9;
-  width: 75%;
+  background-color: #F1F8E9;
+  width: 80%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 /* Убираем фон только для галереи */
@@ -220,9 +308,16 @@ body:not(:has(:target)) main .home {
   display: flex;
   padding: 0;
   margin: 0;
-  height: 100%; /* Allow height to adjust */
+  height: auto; /* Allow height to adjust */
+  width: 100%;
   overflow: hidden;
   border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.ecowood-section:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
 }
 
 .ecowood-text {
@@ -240,24 +335,23 @@ body:not(:has(:target)) main .home {
 }
 
 .images {
-	position: absolute; /* Абсолютное позиционирование: элемент будет наложен поверх родительского */
-	top: 0; 			/* Прижимаем верхнюю грань к верхнему краю родителя */
-	left: 0; 			/* Прижимаем левую грань к левому краю родителя */
-	right: 0;		    /* Прижимаем правую грань к правому краю родителя */
-	bottom: 0; 			/* Прижимаем нижнюю грань к нижнему краю родителя */
+  position: absolute; /* Абсолютное позиционирование: элемент будет наложен поверх родительского */
+  top: 0; /* Прижимаем верхнюю грань к верхнему краю родителя */
+  left: 0; /* Прижимаем левую грань к левому краю родителя */
+  right: 0; /* Прижимаем правую грань к правому краю родителя */
+  bottom: 0; /* Прижимаем нижнюю грань к нижнему краю родителя */
 }
 
 .images img {
-	display: block; 	/* Убираем лишний отступ снизу, который появляется у изображений по умолчанию */
-	width: 100%; 		/* Ширина изображения равна ширине родительского контейнера */
-	height: 100%; 		/* Высота изображения равна высоте родителя */
-	object-fit: cover;  /* Изображение будет масштабироваться, чтобы полностью заполнить блок,
-	                      при этом обрезая лишнее, но сохраняя пропорции */
-    transition: transform 0.3s ease; /* Add transition for hover effect */
+  display: block; /* Убираем лишний отступ снизу, который появляется у изображений по умолчанию */
+  width: 100%; /* Ширина изображения равна ширине родительского контейнера */
+  height: 100%; /* Высота изображения равна высоте родителя */
+  object-fit: cover; /* Изображение будет масштабироваться, чтобы полностью заполнить блок */
+  transition: transform 0.5s ease; /* Add transition for hover effect */
 }
 
 /* Hover effect for images */
-.images img:hover {
+.ecowood-section:hover .images img {
   transform: scale(1.1);
 }
 
@@ -490,4 +584,3 @@ a,
 button:hover {
   cursor: url('../other/UpArrow.cur'), auto;
 }
-
