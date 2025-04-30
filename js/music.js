@@ -11,7 +11,8 @@ const trackList = [
   'a vow, 18FEARS - it matters where you are.mp3',
   'Aurenth - faraway.mp3',
   'daniel - 3 am walk.mp3',
-  'oneheart-last-breath-ft-werve.mp3'
+  'oneheart-last-breath-ft-werve.mp3',
+  'Alex Baker Sahara Moon - Clocks.mp3'
 ];
 
 // Функция, выбирающая случайный трек из списка

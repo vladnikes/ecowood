@@ -1,219 +1,369 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-	<meta charset="UTF-8" >
-	<title>EcoWood</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" type="image/png" href="images/ico.png">
+    <!-- Встановлення кодування UTF-8 для коректного відображення українських символів -->
+    <meta charset="UTF-8">
+    <!-- Мета-тег для адаптивності на різних пристроях -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoWood</title>
+    <!-- Підключення CSS стилів -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Іконка сайту -->
+    <link rel="icon" type="image/png" href="images/ico.png">
 </head>
 <body>
-<!-- Цели для якорей -->
-	<a id="home"></a>
-	<a id="about"></a>
-	<a id="gallery"></a>
-	<a id="contact"></a>
-	<div class="loader-overlay">
-	<div class="loader"></div>
-</div>
+<!-- Цілі для якорів навігації -->
+<a id="home"></a>
+<a id="about"></a>
+<a id="gallery"></a>
+<a id="contact"></a>
 <header>
-	<img src="images/i.gif" alt="EcoWood" class="header-image" >
-	<img src="images/nebo.png" alt="EcoWood" class="header-nebo" >
-	<div> <h1 class="header-title">EcoWood</h1></div>
-<nav >
-	<ul>
-		<li><a href="#home" id="link-home" class="nav-link">
-		<img class="icon" src="images/home.png" alt="home Icon">Головна</a></li>
-		<li><a href="#about" id="link-about" class="nav-link">
-		<img class="icon" src="images/sakura.png" alt="sakura Icon">Про дерева</a></li>
-		<li><a href="#gallery" id="link-gallery" class="nav-link">
-		<img class="icon" src="images/picture.png" alt="picture Icon">Галерея</a></li>
-		<li><a href="#contact" id="link-contact" class="nav-link">
-		<img class="icon" src="images/mail.png" alt="mail Icon">Контакти</a></li>
-	</ul>
-</nav>
+    <!-- Зображення для шапки -->
+    <img src="images/i.gif" alt="листя" class="header-image">
+    <img src="images/nebo.png" alt="небо" class="header-nebo">
+    <!-- Заголовок сайту -->
+    <div><h1 class="header-title">EcoWood</h1></div>
+    <!-- Навігаційне меню -->
+    <nav>
+        <ul>
+            <li><a href="#home" id="link-home" class="nav-link"><img class="icon" src="images/home.png" alt="home Icon">Головна</a></li>
+            <li><a href="#about" id="link-about" class="nav-link"><img class="icon" src="images/sakura.png" alt="sakura Icon">Про дерева</a></li>
+            <li><a href="#gallery" id="link-gallery" class="nav-link"><img class="icon" src="images/picture.png" alt="picture Icon">Асортимент</a></li>
+            <li><a href="#contact" id="link-contact" class="nav-link"><img class="icon" src="images/mail.png" alt="mail Icon">Контакти</a></li>
+        </ul>
+    </nav>
 </header>
 <main>
-
-<!-- Листочки -->
-<div class="leaves-container">
-	<div class="leaf" style="left: 10%; --move-x: 20vw; --rotate: 180deg; animation-delay: 0s;"></div>
-	<div class="leaf" style="left: 30%; --move-x: -30vw; --rotate: 270deg; animation-delay: 3s;"></div>
-	<div class="leaf" style="left: 50%; --move-x: 15vw; --rotate: 360deg; animation-delay: 5s;"></div>
-	<div class="leaf" style="left: 70%; --move-x: -25vw; --rotate: 200deg; animation-delay: 7s;"></div>
-	<div class="leaf" style="left: 90%; --move-x: 10vw; --rotate: 400deg; animation-delay: 10s;"></div>
-</div>
-<!-- Кнопка для включения/выключения листиков -->
-<div class="leaves-toggle-container">
-	<button id="leaves-toggle" class="leaves-toggle-btn" title="Toggle Leaves">
-		<img src="images/green.png" alt="Leaf Icon" class="leaf-icon">
-	</button>
-</div>
-	<!-- Страница Главная -->
-	<section class="page home">
-		<div class="ecowood-section" >
-		  <div class="ecowood-text">
-			<h2>Ласкаво просимо до EcoWood! 🌿</h2> <br>
-			<p> Ми дбаємо про природу та хочемо поділитися знаннями про дерева, ліси та екологію.</p><br> 
-				Наша мета — надихати людей берегти довкілля, цінувати багатство української природи та 
-				вивчати, як кожен з нас може зробити свій внесок у збереження зелених ресурсів. 
-				Через просвітницькі заходи, екологічні ініціативи та співпрацю з громадою ми 
-				прагнемо створити краще майбутнє для наступних поколінь.
-		  </div>
-		  <div class="ecowood-image">
-			<div class="images">
-			  <img src="images/trees1.png" alt="Дерева">
-			</div>
-		  </div>
-		</div>
-	</section>
-	<section class="page home">
-		<div class="ecowood-section">
-			<div class="ecowood-text">
-		<h2>Проект EcoWood 🌿</h2><br>
-		<p>EcoWood — це освітній проєкт про дерева, їх види, значення для природи та способи збереження лісів.</p>
-			</div>
-				<div class="ecowood-image">
-					<div class="images">
-						<img src="images/trees.jpg" alt="Дерева">
-					</div>
-				</div>
-		</div>
-	</section>	
-	<!-- Страница про деревья -->
-	<section class="page about">
-		<div class="ecowood-section">
-		  <div class="ecowood-text">
-			<h2>Чому важливо берегти ліси? 🌳</h2> <br>
-			<p> Ліси очищають повітря, дають притулок тваринам і регулюють клімат. Збереження дерев — це збереження життя.</p>
-		  </div>
-		  <div class="ecowood-image">
-			<div class="images">
-			  <img src="images/trees1.jpg" alt="Дерева">
-			</div>
-		  </div>
-		</div>
-	</section>
-	<section class="page about">
-		<div class="ecowood-section">
-		  <div class="ecowood-text">
-			<h2>Що буде, якщо зникнуть ліси? 🌳❌</h2> <br>
-			<p> Зникне багато видів тварин, погіршиться якість повітря, зросте температура, виникнуть повені та ерозія ґрунтів.</p>
-		  </div>
-		  <div class="ecowood-image">
-			<div class="images">
-			  <img src="images/trees2.jpg" alt="Дерева">
-			</div>
-		  </div>
-		</div>
-	</section>
-	<section class="page about">
-		<div class="ecowood-section">
-		  <div class="ecowood-text">
-			<h2>Скільки кисню може виробити одне дерево за рік? 🌳✨</h2> <br>
-			<p> Одне велике дерево може виробити достатньо кисню для двох осіб на рік.</p>
-		  </div>
-		  <div class="ecowood-image">
-			<div class="images">
-			  <img src="images/trees3.jpg" alt="Дерева">
-			</div>
-		  </div>
-		</div>
-	</section>	
-	<section class="page about">
-		<div class="ecowood-section">
-		  <div class="ecowood-text">
-			<h2>Чи "спілкуються" дерева між собою? 🌳🗣️🌳</h2> <br>
-			<p> Так, через кореневу систему та грибницю дерева можуть передавати сигнали про небезпеку.</p>
-		  </div>
-		  <div class="ecowood-image">
-			<div class="images">
-			  <img src="images/trees4.jpg" alt="Дерева">
-			</div>
-		  </div>
-		</div>
-	</section>
-	<section class="page about">
-		<div class="ecowood-section">
-		  <div class="ecowood-text">
-			<h2>Чим відрізняються хвойні дерева від листяних? 🌲🍃</h2> <br>
-			<p> Хвойні мають голки замість листя і часто вічнозелені (наприклад, сосна), а листяні скидають листя восени (наприклад, дуб, береза).</p>
-		  </div>
-		  <div class="ecowood-image">
-			<div class="images">
-			  <img src="images/trees5.jpg" alt="Дерева">
-			</div>
-		  </div>
-		</div>
-	</section>
-	<section class="page about">
-		<div class="ecowood-section">
-		  <div class="ecowood-text">
-			<h2>Що таке повторне заліснення? 🌱🌳</h2> <br>
-			<p> Це висаджування нових дерев на місці зрубаних або знищених лісів.</p>
-		  </div>
-		  <div class="ecowood-image">
-			<div class="images">
-			  <img src="images/trees6.jpg" alt="Дерева">
-			</div>
-		  </div>
-		</div>
-	</section>
-	<!-- Страница Галерея -->
-	<section class="page gallery">
-			<div class="slider">
-			  <div class="indicators"></div>
-			  <div class="slides">
-				<div class="slide"><img src="images/1.webp" alt="1"></div>
-				<div class="slide"><img src="images/2.webp" alt="2"></div>
-				<div class="slide"><img src="images/3.webp" alt="3"></div>
-				<div class="slide"><video src="video/istockphoto-1347046344-640_adpp_is.mp4" controls></video></div>
-			  </div>
-			  <button class="prev">&#10094;</button>
-			  <button class="next">&#10095;</button>
-			</div>
-	</section>
-	<!-- Страница Контакты -->
-	<section class="page contact">
-		<div class="ecowood-section">
-			<div class="ecowood-text">
-				<h2>Зв’яжіться з нами 📩</h2><br> 
-				<p>Email: ecowood@gmail.com</p>
-			</div>
-				<div class="ecowood-image">
-					<div class="images">
-						<img src="images/contacts.jpg" alt="Дерева">
-					</div>
-				</div>
-		</div>
-	</section>
-	
-<div class="vinyl-container">
-	<img src="images/vinyl.png" id="vinyl" alt="Винил" />
-		<div id="trackName" class="track-name"></div>
-</div>
-	<div class="vinyl-leaves">
-		<img src="images/2.png" id="vinyl" alt="Листья" />
-	</div>
-<audio id="audioPlayer"></audio>
+    <!-- Контейнер для анімованих листочків -->
+    <div class="leaves-container">
+        <div class="leaf" style="left: 10%; --move-x: 20vw; --rotate: 180deg; animation-delay: 0s;"></div>
+        <div class="leaf" style="left: 30%; --move-x: -30vw; --rotate: 270deg; animation-delay: 3s;"></div>
+        <div class="leaf" style="left: 50%; --move-x: 15vw; --rotate: 360deg; animation-delay: 5s;"></div>
+        <div class="leaf" style="left: 70%; --move-x: -25vw; --rotate: 200deg; animation-delay: 7s;"></div>
+        <div class="leaf" style="left: 90%; --move-x: 10vw; --rotate: 400deg; animation-delay: 10s;"></div>
+    </div>
+    <!-- Кнопка для увімкнення/вимкнення листочків -->
+    <div class="leaves-toggle-container">
+        <button id="leaves-toggle" class="leaves-toggle-btn" title="Перемкнути листочки">
+            <img src="images/green.png" alt="Іконка листка" class="leaf-icon">
+        </button>
+    </div>
+    <!-- Секція "Головна" -->
+    <section class="page home">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Ласкаво просимо до EcoWood! 🌿</h2><br>
+                <p>Ми дбаємо про природу та хочемо поділитися знаннями про дерева, ліси та екологію.</p><br>
+                Наша мета — надихати людей берегти довкілля, цінувати багатство української природи та
+                вивчати, як кожен з нас може зробити свій внесок у збереження зелених ресурсів.
+                Через просвітницькі заходи, екологічні ініціативи та співпрацю з громадою ми
+                прагнемо створити краще майбутнє для наступних поколінь.
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees1.png" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page home">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Проект EcoWood 🌿</h2><br>
+                <p>EcoWood — це освітній проєкт про дерева, їх види, значення для природи та способи збереження лісів.</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Секція "Про дерева" -->
+    <section class="page about">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Чому важливо берегти ліси? 🌳</h2><br>
+                <p>Ліси очищають повітря, дають притулок тваринам і регулюють клімат. Збереження дерев — це збереження життя.</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees1.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page about">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Що буде, якщо зникнуть ліси? 🌳❌</h2><br>
+                <p>Зникне багато видів тварин, погіршиться якість повітря, зросте температура, виникнуть повені та ерозія ґрунтів.</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees2.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page about">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Скільки кисню може виробити одне дерево за рік? 🌳✨</h2><br>
+                <p>Одне велике дерево може виробити достатньо кисню для двох осіб на рік.</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees3.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page about">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Чи "спілкуються" дерева між собою? 🌳🗣️🌳</h2><br>
+                <p>Так, через кореневу систему та грибницю дерева можуть передавати сигнали про небезпеку.</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees4.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page about">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Чим відрізняються хвойні дерева від листяних? 🌲🍃</h2><br>
+                <p>Хвойні мають голки замість листя і часто вічнозелені (наприклад, сосна), а листяні скидають листя восени (наприклад, дуб, береза).</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees5.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page about">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Що таке повторне заліснення? 🌱🌳</h2><br>
+                <p>Це висаджування нових дерев на місці зрубаних або знищених лісів.</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/trees6.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Секція "Асортимент" -->
+    <section class="page gallery">
+        <div class="tree-cards">
+            <!-- Картка 1: Дуб -->
+            <div class="tree-card" data-title="Дуб" data-price="1500 грн" data-full-description="Дуб — це міцне та довговічне дерево, яке може жити сотні років. Його деревина використовується в будівництві та меблевій промисловості, а густе листя створює чудовий затінок. Ідеально підходить для великих садів та парків.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/dub.png" alt="Дуб">
+                        <img src="images/dub1.png" alt="Дуб 1">
+                        <img src="images/dub2.png" alt="Дуб 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">1500 грн</div>
+                <div class="tree-hover-description">
+                    <p>Міцний дуб — символ довговічності...</p>
+                </div>
+            </div>
+            <!-- Картка 2: Сосна -->
+            <div class="tree-card" data-title="Сосна" data-price="1200 грн" data-full-description="Сосна — вічнозелене хвойне дерево, яке радує своєю зеленню цілий рік. Вона стійка до морозів і невибаглива у догляді. Чудовий вибір для створення природного ландшафту.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/sosna.png" alt="Сосна">
+                        <img src="images/sosna1.png" alt="Сосна 1">
+                        <img src="images/sosna2.png" alt="Сосна 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">1200 грн</div>
+                <div class="tree-hover-description">
+                    <p>Сосна — вічнозелена краса...</p>
+                </div>
+            </div>
+            <!-- Картка 3: Береза -->
+            <div class="tree-card" data-title="Береза" data-price="1000 грн" data-full-description="Береза — це ніжне листяне дерево з білою корою, яке додає легкості будь-якому ландшафту. Її листя восени стає золотистим, створюючи мальовничу картину. Підходить для невеликих садів.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/bereza.png" alt="Береза">
+                        <img src="images/bereza1.png" alt="Береза 1">
+                        <img src="images/bereza2.png" alt="Береза 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">1000 грн</div>
+                <div class="tree-hover-description">
+                    <p>Береза — ніжність природи...</p>
+                </div>
+            </div>
+            <!-- Картка 4: Каштан -->
+            <div class="tree-card" data-title="Каштан" data-price="800 грн" data-full-description="Каштан – величне листяне дерево з широкою кроною та великими пальчастими листками. Навесні тішить пишними біло-рожевими суцвіттями, а восени дає колючі плоди з блискучими коричневими горіхами. Ідеальне для міських алей та парків.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/kashtan.png" alt="Каштан">
+                        <img src="images/kashtan1.png" alt="Каштан 1">
+                        <img src="images/kashtan2.png" alt="Каштан 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">800 грн</div>
+                <div class="tree-hover-description">
+                    <p>Каштан — величне листяне дерево...</p>
+                </div>
+            </div>
+            <!-- Картка 5: Кедр -->
+            <div class="tree-card" data-title="Кедр" data-price="1500 грн" data-full-description="Кедр – могутнє вічнозелене хвойне дерево з густою кроною та м’якими голками. Його деревина цінується за міцність, а аромат хвої заспокоює. Часто висаджується в садах як символ вічності.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/kedr.png" alt="Кедр">
+                        <img src="images/kedr1.png" alt="Кедр 1">
+                        <img src="images/kedr2.png" alt="Кедр 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">1500 грн</div>
+                <div class="tree-hover-description">
+                    <p>Кедр — могутнє вічнозелене дерево...</p>
+                </div>
+            </div>
+            <!-- Картка 6: Клен -->
+            <div class="tree-card" data-title="Клен" data-price="700 грн" data-full-description="Клен – декоративне листяне дерево, відоме різноманітними формами листя та яскравими осінніми барвами – від золотистого до багряного. Стійке до міських умов, популярне в ландшафтному дизайні.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/klen.png" alt="Клен">
+                        <img src="images/klen1.png" alt="Клен 1">
+                        <img src="images/klen2.png" alt="Клен 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">700 грн</div>
+                <div class="tree-hover-description">
+                    <p>Клен — декоративне листяне дерево...</p>
+                </div>
+            </div>
+            <!-- Картка 7: Липа -->
+            <div class="tree-card" data-title="Липа" data-price="600 грн" data-full-description="Липа – ароматне листяне дерево з серцеподібними листками та дрібними запашними квітами, які приваблюють бджіл. Її мед і чай із суцвіть цінуються в народі. Тінь від липи створює затишок.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/lypa.png" alt="Липа">
+                        <img src="images/lypa1.png" alt="Липа 1">
+                        <img src="images/lypa2.png" alt="Липа 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">600 грн</div>
+                <div class="tree-hover-description">
+                    <p>Липа — ароматне листяне дерево...</p>
+                </div>
+            </div>
+            <!-- Картка 8: Сакура -->
+            <div class="tree-card" data-title="Сакура" data-price="2000 грн" data-full-description="Сакура – витончене декоративне дерево, що вражає ніжними рожевими або білими квітами навесні. Символ Японії, потребує сонячних ділянок і захисту від морозів. Популярне для садів і фотосесій.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/sakuraa.png" alt="Сакура">
+                        <img src="images/sakuraa1.png" alt="Сакура 1">
+                        <img src="images/sakuraa2.png" alt="Сакура 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">2000 грн</div>
+                <div class="tree-hover-description">
+                    <p>Сакура — витончене декоративне дерево...</p>
+                </div>
+            </div>
+            <!-- Картка 9: Верба -->
+            <div class="tree-card" data-title="Верба" data-price="500 грн" data-full-description="Верба – граціозне дерево з довгими гнучкими гілками, що часто росте біля річок і ставків. Її пухнасті 'котики' – символ весни та Великодня в Україні. Невимоглива до ґрунту.">
+                <div class="card-slider">
+                    <div class="card-slides">
+                        <img src="images/verba.png" alt="Верба">
+                        <img src="images/verba1.png" alt="Верба 1">
+                        <img src="images/verba2.png" alt="Верба 2">
+                    </div>
+                    <button class="card-prev">❮</button>
+                    <button class="card-next">❯</button>
+                </div>
+                <div class="tree-price">500 грн</div>
+                <div class="tree-hover-description">
+                    <p>Верба — граціозне дерево...</p>
+                </div>
+            </div>
+        </div>
+        <!-- Модальне вікно для детального опису дерева -->
+        <div class="modal" id="tree-modal">
+            <div class="modal-content">
+                <button class="modal-close">×</button>
+                <div class="modal-slider">
+                    <div class="modal-slides"></div>
+                    <button class="modal-prev">❮</button>
+                    <button class="modal-next">❯</button>
+                </div>
+                <div class="modal-info">
+                    <h3 class="modal-title"></h3>
+                    <p class="modal-description"></p>
+                    <p class="modal-price"></p>
+                    <a href="https://t.me/lerrxwd" class="buy-button" target="_blank">Купити</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Секція "Контакти" -->
+    <section class="page contact">
+        <div class="ecowood-section">
+            <div class="ecowood-text">
+                <h2>Зв’яжіться з нами 📩</h2><br>
+                <p>Email: ecowood@gmail.com</p>
+            </div>
+            <div class="ecowood-image">
+                <div class="images">
+                    <img src="images/contacts.jpg" alt="Дерева">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Контейнер для вінілового програвача -->
+    <div class="vinyl-container">
+        <img src="images/vinyl.png" id="vinyl" alt="Вініл"/>
+        <div id="trackName" class="track-name"></div>
+    </div>
+    <!-- Зображення листя для вінілу -->
+    <div class="vinyl-leaves">
+        <img src="images/2.png" id="vinyl" alt="Листя"/>
+    </div>
+    <!-- Аудіоплеєр -->
+    <audio id="audioPlayer"></audio>
 </main>
+<!-- Футер сайту -->
 <footer>
-	<div class="image-row">
-			<img src="images/grass.png" alt="grass" class="grass">
-			<img src="images/grass.png" alt="grass" class="grass">
-		<div class="footer-text">
-			<p>&copy; 2025 EcoWood. Всі права захищено.</p>
-		</div>
-	</div>
+    <div class="image-row">
+        <img src="images/grass.png" alt="трава" class="grass">
+        <img src="images/grass.png" alt="трава" class="grass">
+        <div class="footer-text">
+            <p>&copy; 2025 EcoWood. Всі права захищено.</p>
+        </div>
+    </div>
 </footer>
-<script src="js/slider.js"></script>
+<!-- Підключення JavaScript файлів -->
 <script src="js/music.js"></script>
 <script src="js/main.js"></script>
-<script src="js/loading.js"></script>
 <script src="js/leaves-toggle.js"></script>
-<script>
-  if (!location.hash) {
-    location.replace(location.href + "#home");
-  }
-</script>
+<script src="js/shop.js"></script>
 </body>
 </html>

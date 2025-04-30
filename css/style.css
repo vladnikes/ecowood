@@ -1,156 +1,169 @@
-/* Подключение шрифта "WinterTrees" из папки fonts */
+/* Підключення шрифта "WinterTrees" із папки fonts */
 @font-face {
   font-family: 'WinterTrees';
   src: url('../fonts/WinterTrees.ttf') format('truetype');
 }
 
-/* Глобальные стили для всех элементов */
+/* Скидання стандартних відступів і встановлення box-sizing для всіх елементів */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Базові стилі для html і body: градієнтний фон, шрифт, гнучкий контейнер для притискання футера донизу */
 html, body {
-  background: linear-gradient(to bottom, #0072ed 0%, #e8f5e9 100%); /* Небо -> трава */
+  background: linear-gradient(to bottom, #0072ed 0%, #e8f5e9 100%); /* Градієнт від синього до зеленого */
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  min-height: 100vh; /* Full viewport height */
-  display: flex;
-  flex-direction: column;
+  background-color: #e8f5e9; /* Колір фону за замовчуванням */
+  color: #2e7d32; /* Колір тексту */
+  min-height: 150vh; /* Мінімальна висота — повна висота вьюпорту */
+  display: flex; /* Гнучкий контейнер */
+  flex-direction: column; /* Вертикальне розташування елементів */
 }
 
+/* Стилі для головного контенту: займає весь доступний простір між шапкою і футером */
 main {
   position: relative;
-  flex: 1;
+  flex: 1; /* Займає весь доступний простір */
   display: flex;
   width: 100%;
+  min-height: 150vh;
   flex-direction: column;
 }
 
-/* Листик */
+/* Стилі для анімованих листочків, що падають */
 .leaf {
   position: absolute;
-  top: -50px;
+  top: -50px; /* Початкова позиція вище екрану */
   width: 50px;
   height: 50px;
-  background: url('../images/green.png') no-repeat center/contain;
-  animation: fall 15s linear infinite;
-  opacity: 0.8;
-}
-/* Скрытие листиков */
-.leaves-hidden .leaf {
-  visibility: hidden;
-  animation: none;
+  background: url('../images/green.png') no-repeat center/contain; /* Зображення листочка */
+  animation: fall 15s linear infinite; /* Анімація падіння */
+  opacity: 0.8; /* Прозорість */
 }
 
+/* Приховування листочків, коли вони вимкнені */
+.leaves-hidden .leaf {
+  visibility: hidden; /* Листочки невидимі */
+  animation: none; /* Анімація зупинена */
+}
+
+/* Анімація падіння листочків */
 @keyframes fall {
   0% {
-    transform: translateX(0) translateY(0) rotate(0deg);
-    opacity: 0.8;
+    transform: translateX(0) translateY(0) rotate(0deg); /* Початкова позиція */
+    opacity: 0.8; /* Початкова прозорість */
   }
   100% {
-    opacity: 0.1; /* пока лист падает — он видимый */
-  }
-  100% {
-    transform: translateX(var(--move-x, 200vw)) translateY(calc(120vh)) rotate(var(--rotate, 360deg));
-    opacity: 0; /* исчезает за подвалом */
+    opacity: 0.1; /* Лист стає менш видимим */
+    transform: translateX(var(--move-x, 200vw)) translateY(calc(120vh)) rotate(var(--rotate, 360deg)); /* Кінцева позиція і обертання */
+    opacity: 0; /* Повне зникнення */
   }
 }
 
-
+/* Контейнер для листочків: фіксована позиція, не заважає прокрутці */
 .leaves-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* высота будет равна высоте сайта */
-  overflow: hidden; /* запретить скролл из-за листиков */
-  pointer-events: none; /* чтобы не мешали нажимать кнопки */
-  z-index: 0; /* чтобы листики были под контентом, если нужно */
+  height: 100%;
+  overflow: hidden; /* Приховує листочки за межами екрану */
+  pointer-events: none; /* Не реагує на взаємодію мишею */
+  z-index: 0; /* Найнижчий рівень накладання */
 }
 
-/* Стили для кнопки переключения листиков */
+/* Стилі для кнопки перемикання листочків */
 .leaves-toggle-container {
   position: fixed;
   bottom: 30px;
   right: 20px;
-  z-index: 1000;
+  z-index: 1000; /* Високий рівень накладання */
 }
 
+/* Стилі для самої кнопки перемикання листочків */
 .leaves-toggle-btn {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8); /* Напівпрозорий фон */
   border: none;
-  border-radius: 50%;
+  border-radius: 50%; /* Кругла форма */
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: url('../other/UpArrow.cur'), auto; /* Кастомний курсор */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Тінь */
+  transition: transform 0.3s ease, background 0.3s ease; /* Плавні переходи */
 }
 
+/* Ефект при наведенні на кнопку */
 .leaves-toggle-btn:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 1); /* Повна непрозорість */
+  transform: scale(1.1); /* Збільшення розміру */
 }
 
+/* Ефект при натисканні на кнопку */
 .leaves-toggle-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.95); /* Зменшення розміру */
 }
 
+/* Стилі для іконки листка в кнопці */
 .leaf-icon {
   width: 30px;
   height: 30px;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease; /* Плавний поворот */
 }
 
+/* Поворот іконки при наведенні */
 .leaves-toggle-btn:hover .leaf-icon {
-  transform: rotate(15deg);
+  transform: rotate(15deg); /* Легкий поворот */
 }
 
-/* Состояние выключенных листиков */
+/* Стилі для іконки, коли листочки вимкнені */
 .leaves-off .leaf-icon {
-  opacity: 0.5;
-  transform: rotate(-15deg);
+  opacity: 0.5; /* Зменшення прозорості */
+  transform: rotate(-15deg); /* Поворот у зворотний бік */
 }
 
+/* Стилі для футера: розташування внизу сторінки */
 footer {
   position: relative;
   width: 100%;
   color: white;
   text-align: center;
-  z-index: 2;
-  margin-top: auto; /* Push footer to bottom of content */
+  z-index: 2; /* Вище за листочки */
+  margin-top: auto; /* Притискається донизу завдяки flex */
 }
 
-.footer-text{
-  color: #F5F5F5;
-  text-shadow:
+/* Стилі для тексту в футері */
+.footer-text {
+  color: #F5F5F5; /* Колір тексту */
+  text-shadow: /* Тінь для тексту */
     2px 2px 10px rgba(0, 0, 0, 1),
     -2px 2px 10px rgba(0, 0, 0, 1),
     2px -2px 10px rgba(0, 0, 0, 1),
-    -2px -2px 10px rgba(0, 0, 0, 1);	
+    -2px -2px 10px rgba(0, 0, 0, 1);
 }
 
+/* Стилі для зображення трави в футері */
 .grass {
   width: 50%;
   height: 30%;
-  object-fit: cover;
-  margin-bottom: -30px;
+  object-fit: cover; /* Масштабування зображення */
+  margin-bottom: -30px; /* Зміщення для природного вигляду */
 }
 
+/* Контейнер для зображень у футері */
 .image-row {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Обтікання на малих екранах */
 }
 
+/* Стилі для шапки сайту */
 header {
   position: relative;
   width: 100%;
@@ -159,16 +172,19 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1; /* Вище за листочки */
 }
 
+/* Зображення в шапці (листя) */
 .header-image {
   position: absolute;
   width: 100%;
   height: 80%;
-  object-fit: cover;
+  object-fit: cover; /* Масштабування зображення */
   z-index: 1;
 }
 
+/* Зображення неба в шапці */
 .header-nebo {
   position: absolute;
   overflow: visible;
@@ -176,411 +192,817 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  filter: blur(3px);
-  opacity: 1;
+  object-fit: cover; /* Масштабування зображення */
+  z-index: 0; /* Нижче за інші елементи шапки */
+  filter: blur(3px); /* Легке розмиття */
+  opacity: 1; /* Повна видимість */
 }
 
+/* Стилі для заголовка в шапці */
 .header-title {
   position: relative;
   top: 80px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  color: #66bb6a;
-  font-size: 8rem;
+  transform: translate(-50%, -50%); /* Центрування */
+  color: #66bb6a; /* Колір тексту */
+  font-size: 8rem; /* Великий розмір шрифту */
   font-weight: bolder;
-  text-shadow:
+  text-shadow: /* Тінь для тексту */
     2px 2px 10px rgba(0, 0, 0, 0.5),
     -2px 2px 10px rgba(0, 0, 0, 0.5),
     2px -2px 10px rgba(0, 0, 0, 0.5),
     -2px -2px 10px rgba(0, 0, 0, 0.5);
-  font-family: 'WinterTrees', sans-serif;
-  z-index: 1;
+  font-family: 'WinterTrees', sans-serif; /* Кастомний шрифт */
+  z-index: 1; /* Вище за зображення */
 }
 
+/* Стилі для навігаційного меню */
 nav {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Вище за шапку */
   padding: 10px 0;
   text-align: center;
   background-color: transparent;
   width: 100%;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
+/* Стилі для списку навігації */
 nav ul {
   list-style: none;
   padding: 10px;
   margin: 0;
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+  flex-wrap: nowrap; /* Без перенесення */
+  gap: 20px; /* Відстань між пунктами */
+  overflow-x: auto; /* Горизонтальна прокрутка */
+  scroll-behavior: smooth; /* Плавна прокрутка */
 }
 
+/* Стилі для елементів списку навігації */
 nav li {
-  flex: 0 0 auto;
+  flex: 0 0 auto; /* Фіксована ширина */
 }
 
+/* Стилі для посилань навігації */
 nav a {
   padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  color: #2e7d32;
+  background-color: rgba(255, 255, 255, 0.5); /* Напівпрозорий фон */
+  color: #2e7d32; /* Колір тексту */
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 10px; /* Закруглені кути */
   font-weight: bold;
-  transition: background-color 0.7s;
+  transition: background-color 0.7s; /* Плавна зміна фону */
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  white-space: nowrap;
+  gap: 6px; /* Відстань між іконкою і текстом */
+  white-space: nowrap; /* Без перенесення тексту */
 }
 
+/* Ефект при наведенні та для активного посилання */
 nav a:hover,
 nav a.active {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 1); /* Повна непрозорість */
 }
 
+/* Стилі для контейнера посилання з іконкою */
 .nav-link {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 8px; /* Відстань між елементами */
   text-decoration: none;
 }
 
+/* Стилі для іконок у навігації */
 .icon {
   width: 20px;
   height: 20px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease; /* Плавне збільшення */
 }
 
+/* Ефект при наведенні на іконку */
 .nav-link:hover .icon {
-  transform: scale(1.2);
+  transform: scale(1.2); /* Збільшення іконки */
 }
 
-/* Стили для всех секций */
+/* Стилі для всіх секцій сторінок */
 .page {
   position: absolute;
-  opacity: 0;
+  opacity: 0; /* Прихована за замовчуванням */
   visibility: hidden;
-  transition: opacity 0.5s, transform 0.5s;
-  transform: translateY(20px);
-  width: 100%; /* Ensure full width */
+  transition: opacity 0.5s, transform 0.5s; /* Плавна поява */
+  transform: translateY(20px); /* Зсув униз */
+  width: 100%;
 }
 
+/* Відображення активної секції */
 #home:target ~ main .home,
 #about:target ~ main .about,
 #gallery:target ~ main .gallery,
 #contact:target ~ main .contact {
   position: relative;
-  opacity: 1;
+  opacity: 1; /* Видима */
   visibility: visible;
-  transform: translateY(0);
-  z-index: 1;
+  transform: translateY(0); /* Без зсуву */
+  z-index: 1; /* Вище за інші секції */
   padding: 0;
   margin: 20px auto;
-  border-radius: 20px;
-  background-color: #F1F8E9;
-  width: 80%;
+  border-radius: 20px; /* Закруглені кути */
+  background-color: #F1F8E9; /* Фон секції */
+  width: 80%; /* Ширина */
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/* Убираем фон только для галереи */
+/* Прозорий фон для секції галереї */
 #gallery:target ~ main .gallery {
   background-color: transparent;
 }
 
-body:not(:has(:target)) main .home {
-  position: relative;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  z-index: 1;
-  min-height: calc(100vh - 300px);
-}
-
+/* Стилі для секцій з текстом і зображеннями */
 .ecowood-section {
   display: flex;
   padding: 0;
   margin: 0;
-  height: auto; /* Allow height to adjust */
+  height: auto;
   width: 100%;
   overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.3s ease;
+  border-radius: 20px; /* Закруглені кути */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Тінь */
+  transition: box-shadow 0.3s ease; /* Плавна зміна тіні */
 }
 
+/* Ефект при наведенні на секцію */
 .ecowood-section:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Посилена тінь */
 }
 
+/* Стилі для текстової частини секції */
 .ecowood-text {
-  flex: 1;
+  flex: 1; /* Займає доступний простір */
   padding: 40px;
   box-sizing: border-box;
 }
 
+/* Стилі для зображення в секції */
 .ecowood-image {
   position: relative;
   height: auto;
-  width: 30%;
+  width: 30%; /* Фіксована ширина */
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 20px; /* Закруглені кути */
 }
 
+/* Контейнер для зображень у секції */
 .images {
-  position: absolute; /* Абсолютное позиционирование: элемент будет наложен поверх родительского */
-  top: 0; /* Прижимаем верхнюю грань к верхнему краю родителя */
-  left: 0; /* Прижимаем левую грань к левому краю родителя */
-  right: 0; /* Прижимаем правую грань к правому краю родителя */
-  bottom: 0; /* Прижимаем нижнюю грань к нижнему краю родителя */
-}
-
-.images img {
-  display: block; /* Убираем лишний отступ снизу, который появляется у изображений по умолчанию */
-  width: 100%; /* Ширина изображения равна ширине родительского контейнера */
-  height: 100%; /* Высота изображения равна высоте родителя */
-  object-fit: cover; /* Изображение будет масштабироваться, чтобы полностью заполнить блок */
-  transition: transform 0.5s ease; /* Add transition for hover effect */
-}
-
-/* Hover effect for images */
-.ecowood-section:hover .images img {
-  transform: scale(1.1);
-}
-
-.slider {
-  position: relative;
-  width: 80%;
-  max-width: 700px;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 20px;
-  aspect-ratio: 16 / 9;
-}
-
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-  height: 100%;
-}
-
-.slide {
-  flex: 0 0 100%;
-  max-width: 100%;
-  height: 100%;
-}
-
-.slide img,
-.slide video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Индикаторы */
-.indicators {
   position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Стилі для зображень у секції */
+.images img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Масштабування зображення */
+  transition: transform 0.5s ease; /* Плавне збільшення */
+}
+
+/* Ефект при наведенні на зображення */
+.ecowood-section:hover .images img {
+  transform: scale(1.1); /* Збільшення зображення */
+}
+
+/* Сітка для карток дерев у галереї */
+.tree-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+  gap: 100px; /* Відстань між картками */
+  width: 100%;
+  max-width: 1200px; /* Максимальна ширина */
+  margin: 0 auto; /* Центрування */
+}
+
+/* Стилі для картки дерева */
+.tree-card {
+  position: relative;
+  border-radius: 20px; /* Закруглені кути */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Тінь */
+  cursor: url('../other/UpArrow.cur'), auto; /* Кастомний курсор */
+  transition: transform 0.5s ease; /* Плавне збільшення */
+}
+
+/* Ефект при наведенні на картку */
+.tree-card:hover {
+  transform: scale(1.1); /* Збільшення картки */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Посилена тінь */
+}
+
+/* Стилі для слайдера в картці */
+.card-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Співвідношення сторін */
+  overflow: hidden;
+}
+
+/* Контейнер для слайдів у картці */
+.card-slides {
   display: flex;
-  gap: 10px;
-  z-index: 10;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* Плавна зміна слайдів */
 }
 
-.indicator {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  transition: background-color 0.3s, transform 0.3s;
+/* Стилі для зображень у слайдері */
+.card-slides img {
+  flex: 0 0 100%; /* Фіксована ширина */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Зображення не обрізається */
 }
 
-.indicator.active {
-  background-color: white;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  transform: scale(1.2);
-}
-
-/* Кнопки */
-.prev,
-.next {
+/* Стилі для кнопок навігації слайдера */
+.card-prev,
+.card-next {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  transform: translateY(-50%); /* Центрування по вертикалі */
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  cursor: url('../other/UpArrow.cur'), auto; /* Кастомний курсор */
+  z-index: 10; /* Вище за слайди */
+  border-radius: 4px; /* Закруглені кути */
+}
+
+/* Позиціонування кнопок слайдера */
+.card-prev { left: 10px; }
+.card-next { right: 10px; }
+
+/* Ефект при наведенні на кнопки слайдера */
+.card-prev:hover,
+.card-next:hover {
+  background: rgba(0, 0, 0, 0.8); /* Темніший фон */
+}
+
+/* Стилі для ціни на картці */
+.tree-price {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(241, 248, 233, 0.7); /* Напівпрозорий фон */
+  color: #2e7d32; /* Колір тексту */
+  padding: 5px 10px;
+  border-radius: 5px; /* Закруглені кути */
+  font-size: 1rem;
+}
+
+/* Опис, що з'являється при наведенні на картку */
+.tree-hover-description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(241, 248, 233, 0.7); /* Напівпрозорий фон */
+  color: #2e7d32; /* Колір тексту */
+  padding: 10px;
+  opacity: 0; /* Прихований за замовчуванням */
+  transform: translateY(100%); /* Зсув униз */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Плавна поява */
+}
+
+/* Поява опису при наведенні */
+.tree-card:hover .tree-hover-description {
+  opacity: 1; /* Видимість */
+  transform: translateY(0); /* Без зсуву */
+}
+
+/* Стилі для модального вікна */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10002; /* Дуже високий рівень накладання */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Стилі для вмісту модального вікна */
+.modal-content {
+  background: #F1F8E9; /* Фон */
+  border-radius: 20px; /* Закруглені кути */
+  padding: 20px;
+  width: 90%;
+  max-width: 1000px; /* Максимальна ширина */
+  display: flex;
+  position: relative;
+  margin: auto;
+  max-height: 80vh; /* Максимальна висота */
+  overflow-y: auto; /* Прокрутка при необхідності */
+}
+
+/* Стилі для слайдера в модальному вікні */
+.modal-slider {
+  width: 60%;
+  aspect-ratio: 4 / 3; /* Співвідношення сторін */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Контейнер для слайдів у модальному вікні */
+.modal-slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* Плавна зміна слайдів */
+}
+
+/* Стилі для зображень у модальному слайдері */
+.modal-slides img {
+  flex: 0 0 100%; /* Фіксована ширина */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Зображення не обрізається */
+  max-height: 80vh; /* Обмеження висоти */
+}
+
+/* Стилі для кнопок навігації модального слайдера */
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Центрування */
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
   color: white;
   border: none;
   font-size: 2rem;
-  padding: 3px 12px;
-  cursor: pointer;
-  z-index: 10;
-  border-radius: 4px;
-  user-select: none;
-  opacity: 0.8;
+  padding: 5px 15px;
+  cursor: url('../other/UpArrow.cur'), auto; /* Кастомний курсор */
+  z-index: 10; /* Вище за слайди */
+  border-radius: 4px; /* Закруглені кути */
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+/* Позиціонування кнопок модального слайдера */
+.modal-prev { left: 10px; }
+.modal-next { right: 10px; }
 
-.prev:hover,
-.next:hover {
-  background: rgba(0, 0, 0, 0.8);
-  opacity: 1;
+/* Ефект при наведенні на кнопки */
+.modal-prev:hover,
+.modal-next:hover {
+  background: rgba(0, 0, 0, 0.8); /* Темніший фон */
 }
 
-/* Стили для элемента с листьями винила */
+/* Стилі для інформаційної частини модального вікна */
+.modal-info {
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Рівномірний розподіл елементів */
+}
+
+/* Стилі для заголовка в модальному вікні */
+.modal-title {
+  font-size: 2rem;
+  color: #2e7d32; /* Колір тексту */
+  margin-bottom: 10px;
+}
+
+/* Стилі для опису в модальному вікні */
+.modal-description {
+  font-size: 1rem;
+  color: #2e7d32; /* Колір тексту */
+  margin-bottom: 10px;
+}
+
+/* Стилі для ціни в модальному вікні */
+.modal-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2e7d32; /* Колір тексту */
+  margin-bottom: 20px;
+}
+
+/* Стилі для кнопки "Купити" */
+.buy-button {
+  display: inline-block;
+  background: #66bb6a; /* Зелений фон */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px; /* Закруглені кути */
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease; /* Плавна зміна фону */
+  cursor: url('../other/UpArrow.cur'), auto; /* Кастомний курсор */
+}
+
+/* Ефект при наведенні на кнопку "Купити" */
+.buy-button:hover {
+  background: #388e3c; /* Темніший зелений */
+}
+
+/* Стилі для кнопки закриття модального вікна */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #2e7d32; /* Колір тексту */
+  cursor: url('../other/UpArrow.cur'), auto; /* Кастомний курсор */
+}
+
+/* Ефект при наведенні на кнопку закриття */
+.modal-close:hover {
+  color: #388e3c; /* Темніший колір */
+}
+
+/* Стилі для зображення листя біля вінілу */
 .vinyl-leaves {
   width: 100px;
   height: 100px;
   position: fixed;
   bottom: 10px;
   left: 0px;
-  z-index: 999;
+  z-index: 999; /* Високий рівень накладання */
 }
 
-/* Стили для контейнера с винилом */
+/* Стилі для контейнера вінілового програвача */
 .vinyl-container {
   width: 60px;
   height: 60px;
   position: fixed;
   bottom: 30px;
   left: 20px;
-  cursor: pointer;
-  z-index: 1000;
+  cursor: url('../other/UpArrow.cur'), auto; /* Кастомний курсор */
+  z-index: 1000; /* Високий рівень накладання */
   display: flex;
   align-items: center;
 }
 
-/* Стили для элемента с id="vinyl" */
+/* Стилі для зображення вінілу */
 #vinyl {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
+  border-radius: 50%; /* Кругла форма */
+  transition: transform 0.3s ease-in-out; /* Плавне обертання */
 }
 
-/* Класс для вращения винила */
+/* Анімація обертання вінілу */
 .rotate {
-  animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite; /* Безперервне обертання */
 }
 
+/* Ефект при наведенні на вініл */
 .vinyl-container:hover #vinyl {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Збільшення */
 }
 
-/* Определение анимации вращения */
+/* Анімація обертання */
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-/* Стили для названия трека */
+/* Стилі для назви треку біля вінілу */
 .track-name {
   margin-left: 12px;
   font-size: 14px;
   color: white;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7); /* Напівпрозорий фон */
   padding: 6px 10px;
-  border-radius: 8px;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
+  border-radius: 8px; /* Закруглені кути */
+  white-space: nowrap; /* Без перенесення */
+  opacity: 0; /* Прихований за замовчуванням */
+  transform: translateY(5px); /* Зсув униз */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Плавна поява */
+  pointer-events: none; /* Не реагує на мишу */
 }
 
-/* Показываем название трека при наведении на контейнер винила */
+/* Поява назви треку при наведенні */
 .vinyl-container:hover .track-name {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* Видимість */
+  transform: translateY(0); /* Без зсуву */
 }
 
-.loader {
-  background: #F10C49;
-  width: 22px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  animation: l10 1.5s infinite linear;
-}
-
-@keyframes l10 {
-  0% {
-    box-shadow: 
-      0 -30px #F4DD51, calc(30px*0.707) calc(-30px*0.707) #E3AAD6, 30px 0 #F4DD51, 0 0 #E3AAD6,
-      0 0 #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6;
-  }
-  12.5% {
-    box-shadow: 
-      0 0 #F4DD51, calc(30px*0.707) calc(-30px*0.707) #E3AAD6, 30px 0 #F4DD51, calc(30px*0.707) calc(30px*0.707) #E3AAD6,
-      0 0 #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6;
-  }
-  25% {
-    box-shadow: 
-      0 0 #F4DD51, 0 0 #E3AAD6, 30px 0 #F4DD51, calc(30px*0.707) calc(30px*0.707) #E3AAD6,
-      0 30px #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6;
-  }
-  37.5% {
-    box-shadow: 
-      0 0 #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, calc(30px*0.707) calc(30px*0.707) #E3AAD6,
-      0 30px #F4DD51, calc(-30px*0.707) calc(30px*0.707) #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6;
-  }
-  50% {
-    box-shadow: 
-      0 0 #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6,
-      0 30px #F4DD51, calc(-30px*0.707) calc(30px*0.707) #E3AAD6, -30px 0 #F4DD51, 0 0 #E3AAD6;
-  }
-  62.5% {
-    box-shadow: 
-      0 0 #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6,
-      0 0 #F4DD51, calc(-30px*0.707) calc(30px*0.707) #E3AAD6, -30px 0 #F4DD51, calc(-30px*0.707) calc(-30px*0.707) #E3AAD6;
-  }
-  75% {
-    box-shadow: 
-      0 -30px #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6,
-      0 0 #F4DD51, 0 0 #E3AAD6, -30px 0 #F4DD51, calc(-30px*0.707) calc(-30px*0.707) #E3AAD6;
-  }
-  87.5% {
-    box-shadow: 
-      0 -30px #F4DD51, calc(30px*0.707) calc(-30px*0.707) #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6,
-      0 0 #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, calc(-30px*0.707) calc(-30px*0.707) #E3AAD6;
-  }
-  100% {
-    box-shadow: 
-      0 -30px #F4DD51, calc(30px*0.707) calc(-30px*0.707) #E3AAD6, 30px 0 #F4DD51, 0 0 #E3AAD6,
-      0 0 #F4DD51, 0 0 #E3AAD6, 0 0 #F4DD51, 0 0 #E3AAD6;
-  }
-}
-
-.loader-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(232, 245, 233, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-/* Курсор для всего сайта */
+/* Кастомний курсор для всього сайту */
 body {
   cursor: url('../other/Arrow.cur'), auto;
 }
 
-/* Курсор при наведении на ссылку и кнопку */
-a,
-button:hover {
+/* Кастомний курсор для інтерактивних елементів */
+.tree-card,
+.card-prev,
+.card-next,
+.modal-close,
+.buy-button,
+.leaves-toggle-btn,
+.vinyl-container {
   cursor: url('../other/UpArrow.cur'), auto;
+}
+
+/* Адаптивні стилі для екранів до 1024px (планшети) */
+@media screen and (max-width: 1024px) {
+  /* Зменшення розміру заголовка */
+  .header-title {
+    font-size: 6rem;
+    top: 60px;
+  }
+
+  /* Зменшення відступів у навігації */
+  nav ul {
+    gap: 10px;
+  }
+
+  /* Зменшення тексту в навігації */
+  nav a {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* Збільшення ширини секцій */
+  #home:target ~ main .home,
+  #about:target ~ main .about,
+  #gallery:target ~ main .gallery,
+  #contact:target ~ main .contact {
+    width: 90%;
+  }
+
+  /* Сітка для карток: 2 колонки */
+  .tree-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+
+  /* Зменшення розміру вінілу */
+  .vinyl-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Зменшення розміру листя біля вінілу */
+  .vinyl-leaves {
+    width: 80px;
+    height: 80px;
+	bottom: 15px;
+	left: 5px;
+  }
+
+  /* Зменшення тексту в модальному вікні */
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-description {
+    font-size: 0.9rem;
+  }
+
+  .modal-price {
+    font-size: 1rem;
+  }
+}
+
+/* Адаптивні стилі для екранів до 768px (мобільні пристрої) */
+@media screen and (max-width: 768px) {
+  /* Зменшення розміру заголовка */
+  .header-title {
+    font-size: 4rem;
+    top: 50px;
+  }
+
+  /* Горизонтальна прокрутка для навігації */
+  nav ul {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+    overflow-x: auto;
+  }
+
+  /* Зменшення тексту в навігації */
+  nav a {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Вертикальне розташування секцій */
+  .ecowood-section {
+    flex-direction: column;
+  }
+
+  /* Зменшення відступів у тексті секції */
+  .ecowood-text {
+    padding: 20px;
+  }
+
+  /* Зміна розміру зображення в секції */
+  .ecowood-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* Сітка для карток: 1 колонка */
+  .tree-cards {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  /* Зменшення розміру вінілу */
+  .vinyl-container {
+    width: 40px;
+    height: 40px;
+
+  }
+
+  /* Зменшення розміру листя біля вінілу */
+  .vinyl-leaves {
+    width: 65px;
+    height: 65px;
+
+  }
+
+  /* Зменшення тексту назви треку */
+  .track-name {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  /* Вертикальне розташування модального вікна */
+  .modal-content {
+    flex-direction: column;
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  /* Зміна розміру слайдера в модальному вікні */
+  .modal-slider {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Зміна розміру інформаційної частини */
+  .modal-info {
+    width: 100%;
+    padding: 15px;
+  }
+
+  /* Зменшення тексту в модальному вікні */
+  .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .modal-description {
+    font-size: 0.8rem;
+  }
+
+  .modal-price {
+    font-size: 0.9rem;
+  }
+
+  /* Зменшення кнопки "Купити" */
+  .buy-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* Зменшення кнопки листочків */
+  .leaves-toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Зменшення іконки листка */
+  .leaf-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Зменшення розміру листочків */
+  .leaf {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Зменшення розміру трави у футері */
+  .grass {
+    width: 50%;
+    height: 30%;
+    margin-bottom: -20px;
+  }
+  
+
+  /* Зменшення тексту в футері */
+  .footer-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* Адаптивні стилі для дуже малих екранів (до 480px) */
+@media screen and (max-width: 480px) {
+  /* Зменшення розміру заголовка */
+  .header-title {
+    font-size: 2.5rem;
+    top: 40px;
+  }
+
+  /* Зменшення тексту в навігації */
+  nav a {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  /* Зменшення іконок у навігації */
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Зменшення відступів у тексті секції */
+  .ecowood-text {
+    padding: 15px;
+  }
+
+  /* Зменшення розміру зображення в секції */
+  .ecowood-image {
+    height: 150px;
+  }
+
+  /* Зменшення тексту ціни в картці */
+  .tree-price {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
+
+  /* Зменшення опису в картці */
+  .tree-hover-description {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  /* Зменшення розміру вінілу */
+  .vinyl-container {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Зменшення листя біля вінілу */
+  .vinyl-leaves {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Зменшення назви треку */
+  .track-name {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  /* Зменшення тексту в модальному вікні */
+  .modal-title {
+    font-size: 1rem;
+  }
+
+  .modal-description {
+    font-size: 0.7rem;
+  }
+
+  .modal-price {
+    font-size: 0.8rem;
+  }
+
+  /* Зменшення кнопки "Купити" */
+  .buy-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Зменшення кнопки листочків */
+  .leaves-toggle-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Зменшення іконки листка */
+  .leaf-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Зменшення розміру листочків */
+  .leaf {
+    width: 25px;
+    height: 25px;
+  }
 }
